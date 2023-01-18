@@ -1,0 +1,36 @@
+iptables assignment
+===================
+
+1. Create two virtual machines on VMWare/Oracle VirtualBox. Both should have Ubuntu/Lububtu/SentOS.
+
+2. The first machine will be 'source' and the second will be 'target'.
+
+3. From the first machine, ping the second and vice versa.
+
+4. Add iptables rule on the second machine to stop ping from the first machine.
+
+5. Remove the above rule and add a rule on the first machine to ban pinging out.
+
+6. Add a web server to the second machine. Try accessing it from the first machine using a browser.
+
+7. Use iptables to stop the above access.
+
+8. Use the list command before and after flush command.
+
+9. Add two opposite rules to the target machine (e.g. ban incoming ping and allow incoming ping). Which one takes precedence and why?
+
+10. Do the above using insert command. Do you notice any difference?
+
+11. Reset all the rules. Use the policy command to reverse the policy for incoming traffic on the target machine. Now try pinging the target machine from the source. Does ping go through?
+
+12. Reset all the rules. Use the policy command to reverse the policy for outgoing traffic on the source machine. Now try pinging the target machine from the source. Does ping go through?
+
+13. Create a shell script to do the following:
+
+(a) Allow all outgoing HTTP traffic for servers hosted outside of our network.
+(b) Block all incoming HTTP traffic for servers hosted inside our network.
+(c) Do not allow anybody to SSH into our network.
+(d) Ban all kind of FTP activity.
+
+
+For all above, take screenshots.
