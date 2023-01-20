@@ -2,9 +2,9 @@ Host 1:
 
 -- Need one interface under host-network1
 
-# ip route add <external network> via <2nd Host internal network IP>
+# ip route add <internal network> via <2nd Host external network IP>
  OR
-# route add default gw <2nd Host internal network IP> dev <Interface name> 
+# route add default gw <2nd Host external network IP> dev <Interface name> 
 
 Host 2:
 
@@ -13,8 +13,8 @@ Host 2:
       2nd interface will in internal interface
 
 # iptables --table nat -A POSTROUTING -o <external interface> -j MASQUERADE
-# iptables -A FORWARD -i <internal interface> -o <external interface> -m state --state RELATED,ESTABLISHED -j ACCEPT
-# iptables -A FORWARD -i <external interface> -o <internal interface> -j ACCEPT
+# iptables -A FORWARD -i <internal interface> -o <external interface>  -j ACCEPT
+# iptables -A FORWARD -i <external interface> -o <internal interface> -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 # echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 # sysctl -p
