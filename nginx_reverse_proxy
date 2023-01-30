@@ -1,0 +1,40 @@
+Nginx proxy
+
+# wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/epel-release-7-11.noarch.rpm
+# rpm -ivh epel-release-7-11.noarch.rpm
+
+# yum install nginx
+
+# systemctl enable nginx
+# systemctl start nginx
+# systemctl status nginx
+
+
+# vi /etc/nginx/nginx.conf 
+
+Under http section inside server block add location block for proxy_pass
+        location / {
+                proxy_pass http://<ip or domain of target host>:<port>;
+        }
+
+for regex in URL use:
+        location ~ ^/login/(.*)$ {
+                proxy_pass http://<ip or domain of target host>:<port>/$1;
+        }
+
+
+# nginx -t
+# systemctl restart nginx
+
+
+----------------------------------------------------------------------------------------------
+
+Configuring Nginx as Load balancer
+# vi /etc/nginx/nginx.conf 
+
+    upstream backend {
+        server server_IP or hostname;
+        server server_IP or hostname;
+    }
+
+use option weight to set priority
