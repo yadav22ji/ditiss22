@@ -22,7 +22,7 @@ for regex in URL use:
                 proxy_pass http://<ip or domain of target host>:<port>/$1;
         }
 
-
+-- test configuration
 # nginx -t
 # systemctl restart nginx
 
