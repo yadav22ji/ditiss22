@@ -1,0 +1,13 @@
+OpenVPN
+
+On Server
+# wget https://git.io/vpn -0 openvpn-install.sh
+# chmod +x openvpn-install.sh
+# ./openvpn-install.sh
+
+# scp above created . ovpn file to client machine
+
+
+On client
+# yum/apt install openvpn
+# openvpn --client --config <.ovpn file name>
