@@ -1,0 +1,70 @@
+#! /bin/bash
+
+yum install -y gcc glibc glibc-common wget unzip httpd php gd gd-devel perl postfix openssl-devel make gettext automake autoconf wget openssl-devel net-snmp net-snmp-utils epel-release perl-Net-SNMP
+
+
+useradd nagios
+
+passwd nagios
+
+groupadd nagcmd
+
+usermod -a -G nagcmd nagios
+
+wget -O nagioscore.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.6.tar.gz
+tar xzf nagioscore.tar.gz
+cd nagioscore-nagios-4.4.6/
+
+./configure --with-nagios-group=nagios --with-command-group=nagcmd
+make all
+make install
+make install-commandmode 
+make install-init
+make install-config
+make install-webconf
+
+
+make install-daemoninit
+systemctl enable httpd.service
+
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+systemctl start httpd.service
+systemctl start nagios.service
+
+
+---- installing nagios plugin ----
+cd 
+wget --no-check-certificate -O nagios-plugins.tar.gz https://github.com/nagios-plugins/nagios-plugins/archive/release-2.3.3.tar.gz
+tar zxf nagios-plugins.tar.gz
+
+cd nagios-plugins-release-2.3.3/
+./tools/setup
+./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+
+make
+make install
+
+
+systemctl restart httpd.service
+systemctl restart nagios.service
+
+
+
+------------------------------------------------------------------------
+On Client:
+yum install epel-release
+yum --enablerepo=epel -y install nrpe nagios-plugins-all
+vi /etc/nagios/nrpe.cfg
+  add nagios server IP in allowed_hosts parameter
+  
+  
+On Server:
+vi /usr/local/nagios/etc/nagios.cfg
+fine line cfg_dir=/usr/local/nagios/etc/servers and uncomment it
+mkdir /usr/local/nagios/etc/servers
+cd /usr/local/nagios/etc/servers
+vi linux.cfg
+
+Define host and services
+List of commands that can be used in services will be found at: 
+/usr/local/nagios/etc/objects/commands.cfg
