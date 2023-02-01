@@ -54,6 +54,8 @@ systemctl restart nagios.service
 On Client:
 yum install epel-release
 yum --enablerepo=epel -y install nrpe nagios-plugins-all
+systemctl enable nrpe
+systemctl start nrpe
 vi /etc/nagios/nrpe.cfg
   add nagios server IP in allowed_hosts parameter
   
