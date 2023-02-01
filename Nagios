@@ -64,7 +64,57 @@ fine line cfg_dir=/usr/local/nagios/etc/servers and uncomment it
 mkdir /usr/local/nagios/etc/servers
 cd /usr/local/nagios/etc/servers
 vi linux.cfg
-
 Define host and services
+
+Use below sample content:
+
+define host{
+        name                  linux-box-remote  ; Name of this template
+        use                   generic-host      ; Inherit default values
+        check_period          24x7
+        check_interval        5
+        retry_interval        1
+        max_check_attempts    10
+        check_command         check-host-alive
+        notification_period   24x7
+        notification_interval 30
+        notification_options  d,r
+        contact_groups        admins
+        register              0                 ; DONT REGISTER THIS - ITS A TEMPLATE
+        }
+define host{
+        use     linux-box-remote
+        host_name       CentOS2
+        alias   CentOS2
+        address 192.168.93.139
+        }
+define service{
+          use                 generic-service
+          host_name           CentOS2
+          service_description PING
+          check_command       check_ping!50:40%!300:100%
+          }
+define service{
+          use                 generic-service
+          host_name           CentOS2
+          service_description CPU Load
+          check_command       check_load!15,10,5!30,25,20
+          }
+define service{
+          use                 generic-service
+          host_name           CentOS2
+          service_description SSH
+          check_command       check_ssh
+          }
+define service{
+          use                 generic-service
+          host_name           CentOS2
+          service_description HTTP Server
+          check_command       check_http
+          }
+
+
+
+
 List of commands that can be used in services will be found at: 
 /usr/local/nagios/etc/objects/commands.cfg
