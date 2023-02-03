@@ -66,6 +66,7 @@ persist
 noauth
 
 Replace server-ip-address with the IP address of the VPN server, user-name with your VPN username, and password with your VPN password.
+Note: these values were set on server at Step 4.
 
 Step 2:
 Connect to the VPN using the following command:
