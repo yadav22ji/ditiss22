@@ -61,5 +61,5 @@ Log a message with a specific tag:
 #logger -t myapp "This is a message from myapp"
 
 
-Additional assigment:
+Actual assigment:)
 Configure your system to send log on login and logout with time stamp
