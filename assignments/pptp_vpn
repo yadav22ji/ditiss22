@@ -1,0 +1,84 @@
+VPN Server:
+
+Step 1: install packages
+#yum install epel-release
+#yum install pptpd ppp
+
+Step 2: 
+Edit the file /etc/pptpd.conf and make the following changes:
+
+localip 192.168.0.1
+remoteip 192.168.0.100-200
+
+Replace 192.168.0.1 with the IP address of the VPN server, and 192.168.0.100-200 with a range of IP addresses that will be assigned to VPN clients.
+
+Step 3: 
+Edit the file /etc/ppp/pptpd-options and add the following line:
+ms-dns 8.8.8.8
+
+Step 4: 
+Add the following lines to the file /etc/ppp/chap-secrets to specify the username and password for VPN clients:
+<user-name> pptpd <password> *
+Replace user-name with the VPN username and password with the VPN password.
+
+
+Step 5: 
+Enable IP forwarding on the VPN server by adding the following line to the file /etc/sysctl.conf:
+net.ipv4.ip_forward=1
+
+Apply the changes with the following command:
+#sysctl -p
+
+Step 6: 
+Configure iptables firewall rules to allow VPN traffic:
+
+#iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+#iptables -A FORWARD -i ppp+ -o eth0 -j ACCEPT
+#iptables -A FORWARD -i eth0 -o ppp+ -j ACCEPT
+Replace eth0 with the name of your network interface.
+
+Step 7:
+Restart the pptpd service:
+#systemctl restart pptpd
+
+Great!!!!
+Now, VPN clients can connect to the VPN server using PPTP and get an IP address from the range specified in /etc/pptpd.conf.
+
+
+############################################################################################################################################
+
+Client Machine:
+
+Step 1: install package
+yum install pptp
+
+
+Step 2:
+Create a configuration file /etc/ppp/peers/vpn-server with the following contents:
+
+pty "pptp server-ip-address --nolaunchpppd"
+name user-name
+password password
+remotename vpn-server
+require-mppe-128
+require-mschap-v2
+persist
+noauth
+
+Replace server-ip-address with the IP address of the VPN server, user-name with your VPN username, and password with your VPN password.
+
+Step 2:
+Connect to the VPN using the following command:
+#pppd call vpn-server
+
+To verify the connection, check the output of the following command:
+ifconfig
+
+You should see a new interface named ppp0 with an IP address assigned by the VPN server.
+
+To disconnect from the VPN, use the following command:
+#killall pppd
+
+
+Addition info:
+For errors/warnings additional inforation could be viewed at '/var/log/messages' on both VPN Server and Client
