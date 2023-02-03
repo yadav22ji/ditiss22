@@ -1,0 +1,65 @@
+Server Machine
+
+Step 1:
+Install rsyslog on the syslog server:
+#yum install rsyslog
+
+Step 3:
+Configure rsyslog to listen on UDP 514:
+#vi /etc/rsyslog.conf
+Add the following line at the end of the file:
+$ModLoad imudp
+$UDPServerRun 514
+
+Step 4:
+Restart rsyslog to apply the changes:
+#systemctl restart rsyslog
+
+Step 5:
+Configure firewall rules to allow incoming syslog messages on UDP 514:
+#firewall-cmd --permanent --add-port=514/udp
+#firewall-cmd --reload
+
+
+#################################################################################################
+
+
+On the client machine
+
+Step 1:
+Install rsyslog:
+#yum install rsyslog
+
+Step 2:
+Configure rsyslog on the client machine to send messages to the syslog server:
+#vi /etc/rsyslog.conf
+Add the following line at the end of the file:
+*.* @<syslog_server_IP>:514
+
+Note: Replace <syslog_server_IP> with the IP address of the syslog server.
+
+Step 3:
+Restart rsyslog on the client machine to apply the changes:
+#systemctl restart rsyslog
+
+Verify that the syslog server is receiving messages from the client machine by checking the /var/log/messages file on the syslog server.
+
+
+#############################################################################################
+How to generate logs from client machine:
+
+Log an informational message:
+#logger -p local0.info "This is an informational message"
+
+Log an error message:
+#logger -p local1.err "This is an error message"
+
+Log a debug message:
+#logger -p local2.debug "This is a debug message"
+
+Log a message with a specific tag:
+#logger -t myapp "This is a message from myapp"
+
+
+Additional assigment:
+Configure your system to send log on login and logout with time stamp
