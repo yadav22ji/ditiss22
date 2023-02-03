@@ -1,0 +1,135 @@
+Domain - Security Testing:
+
+What’s the primary difference between Blind SQL Injection and SQL Injection:
+
+Types of XSS -(DOM, Stored, Reflected)
+Reflected: Payload is reflected from the request (HTTP)
+Stored: Payload is stored on the server-side
+DOM: Payload is executed by modifying the DOM environment at the client side
+Difference between vulnerability and threat
+Vulnerability is defined as the weakness in the system/security program which can be exploited by a threat (intentionally or unintentionally).
+
+Thumb rule to identify vulnerability and threat - “ You can always control vulnerability(Unpatched systems, inadequate controls) but you have no control over threat(Hacker, Flood, Earthquake)”
+
+Encryption Vs Hashing Vs Encoding
+Encryption is used to achieve confidentiality.
+Hashing is used to ensure data integrity.
+Encoding is used to transform data from one format to another so that it is readable by most of the systems.
+What is Burpsuite?
+Burpsuite is a proxy-based tool used to evaluate the security of web-based applications and do hands-on testing. It is primarily used for the identification of application vulnerabilities.
+
+What are the different attacks that you have performed using Kali Linux?
+Is Wireshark a network monitoring tool? Yes, Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and educationists vs IPS vs Firewall
+What is the role of a secure attribute in a cookie?
+The secure attribute is used to prevent transmission of cookies over an unencrypted channel. Browsers which support the secure flag will only send cookies with the secure flag when the request is going to an HTTPS page.
+
+Cookie vs Session
+How does CSRF Attack work?
+Symmetric Vs Asymmetric Cryptography
+IPv4 Vs IPv6
+How can you mitigate SQL injection/ XSS/ CSRF attack
+How can you prevent web server attacks?
+List any 3 ways to prevent Brute Force Attacks.
+What does Maltego do?
+Explain Buffer Overflow.
+What is Heart Bleed Attack?
+IPv4 Packet Header Analysis
+Switch Vs Hub Vs Router
+HTTPS Vs HTTP
+What is the use of Salting in Hashing?
+What is the difference between an APT and Malware?
+What are the different types of malware?
+Virus Vs Worm
+What is the difference between VA and PT?
+What is the difference between payload and exploit?
+Explain XXE attack and its countermeasures.
+What do you understand by Auxiliary modules is Metasploit?
+What do you understand by Sender Policy Framework? How it is different from DMARC?
+What is the role of AD in-network Security?
+What are the different network layer attacks?
+What do you understand by DHCP spoofing? How does DHCP work?
+Public IP vs Private IP
+Blacklist Validation Vs White List Validation
+What is the role of Netcat in reverse shell?
+How can you perform a DDOS attack?
+Explain how information travels in a network(Make sure you involve each layer of OSI Model while answering)
+What do you understand by Fuzzing?
+Explain different phases of Hacking in detail.
+What do you understand by session hijacking? How can it be prevented?
+What is click-jacking?
+Explain the MITM attack.
+What is the role of DMZ in network security?
+What is a replay attack in network security? In simple terms, what is the difference between wiretapping and replay attacks in network security?
+Elucidate the applications of Digital Signature.
+What do you understand by a Host Header Injection attack?
+Can you perform OS-level exploits using SQL injection?
+Explain different phases of Hacking. Also, name different tools that you are gonna use during each phase.
+What is the difference between Active Reconnaissance and Passive Reconnaissance?
+List out the tools that you are gonna use for
+Target Validation
+Finding Subdomains
+Finger Printing
+Data Breaches
+For testing, I would advise you to study OWASP TOP 10 for Web App Security. Besides clear understanding of networking is required to ace the interview.
+
+Important Tools: Burpsuite, nmap, netcat, Armitage, sqlmap, Metasploit, Nessus, and Wireshark.
+
+Security Audit / IS Risk Assessments:
+
+Risk Appetite Vs Risk Tolerance Vs Risk Capacity
+What do you mean by risk culture of any organization?
+Difference between risk, vulnerability, and threat
+What is the difference between Risk Assessment and an Audit?
+Risk Assessment Vs Gap Assessment
+What is the difference between Risk owner and Remediation owner?
+What is Exception Management? (Flow Diagram)
+What is Change Management? (Flow Diagram)
+Role of disruptive tech in the future of Audit?
+What is the role of PCI DSS in the payment card industry?
+What are the major pitfalls in getting compliant to PCI DSS?
+What is the importance of Governance in the GRC framework?
+What are QSAs in PCI DSS?
+What do you understand by Non Conformity?
+What are the 10 things that you must look during Server Security Audit?
+What are the 10 things that you must look during Physical Security Audit?
+What do you understand by the Vendor Risk Management Program?
+What do you understand by Incident Management? (Flow diagram)
+What are the security implications of EU GDPR? What are the security and privacy implications of the EU GDPR?
+Does India have a privacy Law?
+What do you know about the IT Act? What are the recent amendments made in the IT ACT? Can you update me with cyber laws in India? Do all countries have different cyber laws?
+What are the factors that can result in data leakage?
+What do you understand by Ransomware? Explain its impact on an organization in terms of regulatory, operational, and financial losses.
+Preventive Vs Detective Vs Corrective controls
+What do you understand by residual risk?
+What do you understand by Identity Access Management System?
+How can you protect data at rest and data in motion?
+What do you understand by ISMS?
+Excel Skills- V lookup, Pivoting, H lookup, Data Visualisation, and automation through Macros.
+Security Vs Privacy
+Risk Vs Inherent Risk Vs Residual Risk
+Why Audit is performed?
+What is the difference between Business Continuity and Disaster Recovery?
+False Positive Vs False Negative
+Define Governance. Also, explain the difference between Governance and Management.
+Explain the chain of custody.
+What is the importance of Audit trails?
+Explain SOA? Are controls defined in SOA are mandatory?
+Explain different Risk treatment techniques.
+What are the different threats and vulnerabilities that you can map with Physical Security/Server Security/Network Security
+RTO Vs RPO(BCP & DR)
+Would you suggest Cloud adoption for BCP strategy? Why/Why not?
+Information Technology Vs Information Systems
+What are the different phases of Business Continuity?
+What are the major components of a DR drill report?
+What do you understand by BIA?
+Standard vs policy vs procedure vs guidelines
+What do you understand by I(Identification)A(Authentication)A(Authorization)A(Accountability or Auditing)? Explain with an example.
+Difference between authorization and authentication with example.
+DAC (Discretion Access Control)vs MAC(Mandatory Access Control) vs RBAC(Role-Based Access Control)
+Explain different phases of Risk Management.
+Difference between Copyright and Trademark.
+What is the difference between KPI and KRI?
+What is the difference between a Quantitative Risk Analysis and Qualitative Risk Analysis?
+How is privacy different than Security?
+What are the traditional ways of Data Disposal in an organization?
+What are the important clauses that an auditor should look at while auditing third party agreements
