@@ -60,3 +60,7 @@ EOF
 
 # Launching snort
 snort -A console -i ens33 -u snort -g snort -c /etc/snort/snort.conf
+
+Example rule for facebook
+alert tcp $EXTERNAL_NET any -> $HOME_NET 443 (msg:"Facebook Traffic"; content:"facebook.com"; nocase; classtype:web-application-activity; sid:10001; rev:1;)
+
